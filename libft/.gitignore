@@ -1,0 +1,7 @@
+*.out
+.vs*
+*.swp
+*.dSY
+*.dSY/*
+.DS_Store
+*.o
