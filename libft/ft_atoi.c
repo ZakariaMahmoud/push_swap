@@ -9,7 +9,7 @@
 /*   Updated: 2021/11/26 16:34:03 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "../push_swap.h"
 
 static int	ft_isspace(const char *str)
 {
