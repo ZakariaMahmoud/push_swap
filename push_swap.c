@@ -1,5 +1,5 @@
 #include "push_swap.h"
-#include "libft/libft.h"
+
 
 void	ft_check(int argc, char *argv[])
 {
@@ -12,7 +12,7 @@ void	ft_check(int argc, char *argv[])
 		j = 0;
 		while(argv[i][j])
 		{
-			if (!(ft_isdigit(argv[i][j]) || (argv[i][j] == '-' && ft_isdigit(argv[i][j + 1]))|| (argv[i][j] == '+' && ft_isdigit(argv[i][j + 1]))))
+			if (!(ft_isdigit(argv[i][j]) || (argv[i][j] == '-' && ft_isdigit(argv[i][j + 1])) || (argv[i][j] == '+' && ft_isdigit(argv[i][j + 1]))))
 			{
 				write(1,"Error\n", 6);
 				exit(0);
@@ -72,50 +72,7 @@ void push(Stack *stack, int item)
     stack->array[++stack->top] = item;
 }
 
-void ft_sa(Stack *stack)
-{
-	int	tmp;
 
-	tmp = stack->array[stack->top];
-	stack->array[stack->top] = stack->array[stack->top - 1];
-	stack->array[stack->top - 1] = tmp;
-	write(1,"sa\n", 3);
-}
-
-void ft_ra(Stack *stack)
-{
-	int	tmp;
-	int	top;
-
-	top = stack->top;
-	tmp = stack->array[top];
-	while(top >= 1)
-	{
-		stack->array[top] = stack->array[top -1];
-		top--;
-	}
-	stack->array[top] = tmp;
-	write(1,"ra\n", 3);
-}
-
-void ft_rra(Stack *stack)
-{
-	int	tmp;
-	int	top;
-	int	i;
-
-	top = stack->top;
-	tmp = stack->array[0];
-	i = 0;
-	while(i < top)
-	{
-		stack->array[i] = stack->array[i + 1];
-		i++;
-	}
-	stack->array[i] = tmp;
-	write(1,"rra\n", 4);
-
-}
 
 void sort_three_numbers(Stack *stack)
 {
@@ -155,14 +112,11 @@ void print_stack(Stack *stack)
 	int top;
 
 	top = stack->top;
-	printf("-----------------\n");
 	while(top >= 0)
 	{
 		printf("Array[%d] = %d\n", top, stack->array[top]);
 		top--;
 	}
-	printf("-----------------\n");
-
 
 }
 
@@ -188,18 +142,12 @@ int main(int argc, char *argv[])
 				ft_sa(stack);
 			else if (argc == 4)
 				sort_three_numbers(stack);
-
-
 			print_stack(stack);
 		}
-		
 	}
 	else if(argc == 2)
 		ft_check(argc, argv);
 }
-
-
-
 
 // 3 2 1
 // 2 3 1
@@ -212,3 +160,4 @@ int main(int argc, char *argv[])
 // print_stack(stack);
 // 			ft_rra(stack);
 // 			print_stack(stack);
+
