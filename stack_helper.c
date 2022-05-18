@@ -14,12 +14,31 @@ t_stack	*ft_lstnew(int	content)
 }
 
 
-void	ft_lstadd_front(t_stack **lst, t_stack *new)
+void	ft_lstadd_back(t_stack **lst, t_stack *new)
 {
-	if (lst && new)
+	t_stack	*tmp;
+
+	tmp = *lst;
+	if (lst)
 	{
-		new->next = *lst;
-		*lst = new;
-		
+		if (*lst == NULL)
+		{
+			*lst = new;
+		}
+		else
+		{
+			tmp = ft_lstlast(*lst);
+			tmp->next = new;
+		}
 	}
+}
+
+t_stack	*ft_lstlast(t_stack *lst)
+{
+	t_stack	*tmp;
+
+	tmp = lst;
+	while (tmp != NULL && tmp->next != NULL)
+		tmp = tmp->next;
+	return (tmp);
 }

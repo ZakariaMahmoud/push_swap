@@ -4,6 +4,7 @@ void ft_sa(t_stack *stack)
 {
 	t_stack	*tmp_stack;
     int n;
+
     tmp_stack = stack->next;
     n = tmp_stack->content;
     tmp_stack->content = stack->content;
@@ -15,10 +16,11 @@ void ft_sb(t_stack *stack)
 {
 	t_stack	*tmp_stack;
     int n;
-    tmp_stack = stack->next;
-    n = tmp_stack->content;
-    tmp_stack->content = stack->content;
-    stack->content = n;
+
+	tmp_stack = stack->next;
+	n = tmp_stack->content;
+	tmp_stack->content = stack->content;
+	stack->content = n;
 	write(1,"sb\n", 3);
 }
 
@@ -41,116 +43,162 @@ void ft_ss(t_stack *stackA, t_stack *stackB)
 	write(1,"ss\n", 3);
 }
 
-
-
-void ft_ra(t_stack *stack)
+void ft_ra(t_stack **stack)
 {
-	int	tmp;
-	int	top;
+	t_stack	*last;
+	t_stack	*before_last;
 
-	top = stack->top;
-	tmp = stack->array[top];
-	while(top >= 1)
+	last = *stack;
+	before_last = NULL;
+	while(last != NULL && last->next != NULL)
 	{
-		stack->array[top] = stack->array[top -1];
-		top--;
+		before_last = last;
+		last = last->next;
 	}
-	stack->array[top] = tmp;
+	before_last->next = NULL;
+	last->next = *stack;
+	*stack = last;
 	write(1,"ra\n", 3);
 }
 
-// void ft_rb(Stack *stack)
-// {
-// 	int	tmp;
-// 	int	top;
+void ft_rb(t_stack **stack)
+{
+	t_stack	*last;
+	t_stack	*before_last;
 
-// 	top = stack->top;
-// 	tmp = stack->array[top];
-// 	while(top >= 1)
-// 	{
-// 		stack->array[top] = stack->array[top -1];
-// 		top--;
-// 	}
-// 	stack->array[top] = tmp;
-// 	write(1,"rb\n", 3);
-// }
+	last = *stack;
+	before_last = NULL;
+	while(last != NULL && last->next != NULL)
+	{
+		before_last = last;
+		last = last->next;
+	}
+	before_last->next = NULL;
+	last->next = *stack;
+	*stack = last;
+	write(1,"rb\n", 3);
+}
 
-// void ft_rr(Stack *stackA, Stack *stackB)
-// {
-// 	int	tmp;
-// 	int	top;
+void ft_rr(t_stack **stackA, t_stack **stackB)
+{
+	t_stack	*last;
+	t_stack	*before_last;
 
-// 	top = stackA->top;
-// 	tmp = stackA->array[top];
-// 	while(top >= 1)
-// 	{
-// 		stackA->array[top] = stackA->array[top -1];
-// 		top--;
-// 	}
-// 	stackA->array[top] = tmp;
+	last = *stackA;
+	before_last = NULL;
+	while(last != NULL && last->next != NULL)
+	{
+		before_last = last;
+		last = last->next;
+	}
+	before_last->next = NULL;
+	last->next = *stackA;
+	*stackA = last;
 
-//     top = stackB->top;
-// 	tmp = stackB->array[top];
-// 	while(top >= 1)
-// 	{
-// 		stackB->array[top] = stackB->array[top -1];
-// 		top--;
-// 	}
-// 	stackB->array[top] = tmp;
-// 	write(1,"rr\n", 3);
-// }
+	last = *stackB;
+	before_last = NULL;
+	while(last != NULL && last->next != NULL)
+	{
+		before_last = last;
+		last = last->next;
+	}
+	before_last->next = NULL;
+	last->next = *stackB;
+	*stackB = last;
+	write(1,"rr\n", 3);
+}
 
-// void ft_rra(Stack *stack)
-// {
-// 	int	tmp;
-// 	int	top;
-// 	int	i;
+ void ft_rra(t_stack **stack)
+{
+	t_stack	*head;
+	t_stack	*last;
+	t_stack	*after_head;
 
-// 	top = stack->top;
-// 	tmp = stack->array[0];
-// 	i = 0;
-// 	while(i < top)
-// 	{
-// 		stack->array[i] = stack->array[i + 1];
-// 		i++;
-// 	}
-// 	stack->array[i] = tmp;
-// 	write(1,"rra\n", 4);
-// }
+	head = *stack;
+	after_head = head->next;
+	last = ft_lstlast(*stack);
+	last->next = head;
+	*stack = after_head;
+	head->next = NULL;
+	write(1,"rra\n", 3);
+}
 
-// void ft_rrb(Stack *stack)
-// {
-// 	int	tmp;
-// 	int	top;
-// 	int	i;
+ void ft_rrb(t_stack **stack)
+{
+	t_stack	*head;
+	t_stack	*last;
+	t_stack	*after_head;
 
-// 	top = stack->top;
-// 	tmp = stack->array[0];
-// 	i = 0;
-// 	while(i < top)
-// 	{
-// 		stack->array[i] = stack->array[i + 1];
-// 		i++;
-// 	}
-// 	stack->array[i] = tmp;
-// 	write(1,"rrb\n", 4);
-// }
+	head = *stack;
+	after_head = head->next;
+	last = ft_lstlast(*stack);
+	last->next = head;
+	*stack = after_head;
+	head->next = NULL;
+	write(1,"rrb\n", 3);
+}
 
-// void ft_pa(Stack *stackA, Stack *stackB)
-// {
-// 	int	topB;
+void ft_rrr(t_stack **stackA, t_stack **stackB)
+{
+	t_stack	*head;
+	t_stack	*last;
+	t_stack	*after_head;
 
-// 	topB = stackB->top - 1;
-// 	push(stackA, stackB->array[topB]);
-// 	write(1,"pa\n", 4);
-// }
+	head = *stackA;
+	after_head = head->next;
+	last = ft_lstlast(*stackA);
+	last->next = head;
+	*stackA = after_head;
+	head->next = NULL;
 
-// void ft_pb(Stack *stackA, Stack *stackB)
-// {
-// 	int	topA;
+	head = *stackB;
+	after_head = head->next;
+	last = ft_lstlast(*stackB);
+	last->next = head;
+	*stackB = after_head;
+	head->next = NULL;
 
-// 	topA = stackA->top - 1;
-// 	push(stackB, stackA->array[topA]);
-// 	write(1,"pb\n", 4);
-// }
+	write(1,"rrr\n", 3);
+}
 
+void ft_pa(t_stack **stackA, t_stack **stackB)
+{
+	t_stack	*last;
+	t_stack	*before_last;
+
+	last = ft_lstlast(*stackB);
+	ft_lstadd_back(stackA, ft_lstnew(ft_lstlast(*stackB)->content));
+
+	before_last = NULL;
+	last = *stackB;
+	while(last != NULL && last->next != NULL)
+	{
+		before_last = last;
+		last = last->next;
+	}
+	before_last->next = NULL;
+	free(last);
+
+	write(1,"pa\n", 3);
+}
+
+void ft_pb(t_stack **stackA, t_stack **stackB)
+{
+	t_stack	*last;
+	t_stack	*before_last;
+
+	last = ft_lstlast(*stackA);
+	ft_lstadd_back(stackB, ft_lstnew(ft_lstlast(*stackA)->content));
+
+	before_last = NULL;
+	last = *stackA;
+	while(last != NULL && last->next != NULL)
+	{
+		before_last = last;
+		last = last->next;
+	}
+	before_last->next = NULL;
+	free(last);
+
+	write(1,"pb\n", 3);
+}

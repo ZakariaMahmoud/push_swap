@@ -10,8 +10,13 @@ typedef struct stack {
 }  t_stack;
 
 t_stack *ft_lstnew(int	content);
-void    ft_lstadd_front(t_stack **lst, t_stack *new);
+void    ft_lstadd_back(t_stack **lst, t_stack *new);
 void    ft_sa(t_stack *stack);
+void    ft_ra(t_stack **stack);
+void    ft_rra(t_stack **stack);
+t_stack	*ft_lstlast(t_stack *lst);
+void ft_pa(t_stack **stackA, t_stack **stackB);
+void ft_pb(t_stack **stackA, t_stack **stackB);
 
 int	ft_isdigit(int c);
 int	ft_atoi(const char *str);
