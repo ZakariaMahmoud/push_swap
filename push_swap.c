@@ -105,45 +105,40 @@ void print_stack(t_stack *stack)
 	printf("HEAD [");
 	while (stack)
 	{
-		printf(" %d,", stack->content);
+		printf("%d, ", stack->content);
 		stack = stack->next;
 	}
-	printf("] TOP\n");
+	printf("\b\b] TOP\n");
 }
 
-// int main(int argc, char *argv[])
-// {
-// 	int		i;
-// 	t_stack	*stack;
+int main(int argc, char *argv[])
+{
+	int		i;
+	t_stack	*stack;
 
-// 	if (argc > 2)
-// 	{
-// 		ft_check(argc, argv);
-// 		ft_check_duplicated(argc, argv);
-// 		stack = ft_lstnew(ft_atoi(argv[1]));
+	if (argc > 2)
+	{
+		ft_check(argc, argv);
+		ft_check_duplicated(argc, argv);
+		stack = ft_lstnew(ft_atoi(argv[1]));
 
-// 		i = 2;
-// 		while(i < argc)
-// 			ft_lstadd_back(&stack, ft_lstnew(ft_atoi(argv[i++])));
+		i = 2;
+		while(i < argc)
+			ft_lstadd_back(&stack, ft_lstnew(ft_atoi(argv[i++])));
 			
-// 		if (!is_sorted(stack))
-// 		{
-// 			// printf("Yes");
-// 			print_stack(stack);
-// 			printf("-------\n");
-// 			printf("Head address = %p | content = %d\n", &stack, stack->content);
-// 			ft_rra(&stack);
-// 			printf("Head address = %p | content = %d\n", &stack, stack->content);
-// 			// if (argc == 3)
-// 			// 	ft_sa(stack);
-// 			// else if (argc == 4)
-// 			//  	sort_three_numbers(stack);
-// 			print_stack(stack);
-// 		}
-// 	}
-// 	else if(argc == 2)
-// 		ft_check(argc, argv);
-// }
+		if (!is_sorted(stack))
+		{
+
+			if (argc == 3)
+				ft_sa(stack);
+			// else if (argc == 4)
+			//  	sort_three_numbers(stack);
+			print_stack(stack);
+		}
+	}
+	else if(argc == 2)
+		ft_check(argc, argv);
+}
 
 
 // int main()
