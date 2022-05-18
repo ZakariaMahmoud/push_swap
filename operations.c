@@ -43,7 +43,7 @@ void ft_ss(t_stack *stackA, t_stack *stackB)
 	write(1,"ss\n", 3);
 }
 
-void ft_ra(t_stack **stack)
+void ft_rra(t_stack **stack)
 {
 	t_stack	*last;
 	t_stack	*before_last;
@@ -58,10 +58,10 @@ void ft_ra(t_stack **stack)
 	before_last->next = NULL;
 	last->next = *stack;
 	*stack = last;
-	write(1,"ra\n", 3);
+	write(1,"rra\n", 4);
 }
 
-void ft_rb(t_stack **stack)
+void ft_rrb(t_stack **stack)
 {
 	t_stack	*last;
 	t_stack	*before_last;
@@ -76,10 +76,10 @@ void ft_rb(t_stack **stack)
 	before_last->next = NULL;
 	last->next = *stack;
 	*stack = last;
-	write(1,"rb\n", 3);
+	write(1,"rrb\n", 4);
 }
 
-void ft_rr(t_stack **stackA, t_stack **stackB)
+void ft_rrr(t_stack **stackA, t_stack **stackB)
 {
 	t_stack	*last;
 	t_stack	*before_last;
@@ -105,10 +105,10 @@ void ft_rr(t_stack **stackA, t_stack **stackB)
 	before_last->next = NULL;
 	last->next = *stackB;
 	*stackB = last;
-	write(1,"rr\n", 3);
+	write(1,"rrr\n", 4);
 }
 
- void ft_rra(t_stack **stack)
+ void ft_ra(t_stack **stack)
 {
 	t_stack	*head;
 	t_stack	*last;
@@ -120,10 +120,10 @@ void ft_rr(t_stack **stackA, t_stack **stackB)
 	last->next = head;
 	*stack = after_head;
 	head->next = NULL;
-	write(1,"rra\n", 3);
+	write(1,"ra\n", 3);
 }
 
- void ft_rrb(t_stack **stack)
+ void ft_rb(t_stack **stack)
 {
 	t_stack	*head;
 	t_stack	*last;
@@ -135,10 +135,10 @@ void ft_rr(t_stack **stackA, t_stack **stackB)
 	last->next = head;
 	*stack = after_head;
 	head->next = NULL;
-	write(1,"rrb\n", 3);
+	write(1,"rb\n", 3);
 }
 
-void ft_rrr(t_stack **stackA, t_stack **stackB)
+void ft_rr(t_stack **stackA, t_stack **stackB)
 {
 	t_stack	*head;
 	t_stack	*last;
@@ -158,7 +158,7 @@ void ft_rrr(t_stack **stackA, t_stack **stackB)
 	*stackB = after_head;
 	head->next = NULL;
 
-	write(1,"rrr\n", 3);
+	write(1,"rr\n", 3);
 }
 
 void ft_pa(t_stack **stackA, t_stack **stackB)
