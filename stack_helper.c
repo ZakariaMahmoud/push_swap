@@ -42,3 +42,23 @@ t_stack	*ft_lstlast(t_stack *lst)
 		tmp = tmp->next;
 	return (tmp);
 }
+
+int get_min(t_stack *stack, int *index, int *position)
+{
+	int	min;
+
+	index = 0;
+	min = stack->content;
+	position = 0;
+	while(stack != NULL)
+	{
+		if(min > stack->content)
+		{
+			position = index;
+			min = stack->content;
+		}
+		stack = stack->next;
+		index++;
+	}
+	return (min);
+}

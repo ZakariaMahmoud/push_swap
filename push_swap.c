@@ -66,6 +66,16 @@ int is_sorted(t_stack *stack)
 // }
 
 
+void print_stack(t_stack *stack)
+{
+	printf("HEAD [");
+	while (stack)
+	{
+		printf("%d, ", stack->content);
+		stack = stack->next;
+	}
+	printf("\b\b] TOP\n");
+}
 
 void sort_three_numbers(t_stack **stack)
 {
@@ -95,15 +105,35 @@ void sort_three_numbers(t_stack **stack)
 	}
 }
 
-void print_stack(t_stack *stack)
+void sort_less_ten(t_stack **stack)
 {
-	printf("HEAD [");
-	while (stack)
+	t_stack  *head;
+	int min;
+	int i;
+	int position;
+
+
+	min = get_min(stack, &i, &position);
+	printf("-----------------------\n");
+	if(position <= (i - 1) / 2)
 	{
-		printf("%d, ", stack->content);
-		stack = stack->next;
+		i = 0;
+		while(i <= position )
+		{
+			ft_ra(stack);
+			i++;
+		}
 	}
-	printf("\b\b] TOP\n");
+	else
+	{
+		while(i > position + 1)
+		{
+			ft_rra(stack);
+			i--;
+		}
+	}
+	printf("-----------------------\n");
+
 }
 
 int main(int argc, char *argv[])
@@ -124,10 +154,14 @@ int main(int argc, char *argv[])
 		if (!is_sorted(stack))
 		{
 			print_stack(stack);
-			if (argc == 3)
-				ft_sa(stack);
-			else if (argc == 4)
-			 	sort_three_numbers(&stack);
+			// ft_ra(&stack);
+			// if (argc == 3)
+			// 	ft_sa(stack);
+			// else if (argc == 4)
+			//  	sort_three_numbers(&stack);
+			// else if (argc < 10)
+				sort_less_ten(&stack);
+
 			print_stack(stack);
 		}
 	}
