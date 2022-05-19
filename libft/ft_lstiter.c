@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmahmoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/21 23:56:49 by zmahmoud          #+#    #+#             */
-/*   Updated: 2021/11/25 23:24:45 by zmahmoud         ###   ########.fr       */
+/*   Created: 2021/11/25 23:14:41 by zmahmoud          #+#    #+#             */
+/*   Updated: 2021/11/25 23:14:43 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-t_list	*ft_lstlast(t_list *lst)
+void	ft_lstiter(t_stack *lst, void (*f)(void *))
 {
-	t_list	*tmp;
-
-	tmp = lst;
-	while (tmp != NULL && tmp->next != NULL)
-		tmp = tmp->next;
-	return (tmp);
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
 }

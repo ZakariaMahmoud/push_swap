@@ -1,64 +1,55 @@
 #include "push_swap.h"
 
-
-t_stack	*ft_lstnew(int	content)
-{
-	t_stack	*list;
-
-	list = (t_stack *)malloc(sizeof(t_stack));
-	if (!list)
-		return (0);
-	list->content = content;
-	list->next = NULL;
-	return (list);
-}
-
-
-void	ft_lstadd_back(t_stack **lst, t_stack *new)
-{
-	t_stack	*tmp;
-
-	tmp = *lst;
-	if (lst)
-	{
-		if (*lst == NULL)
-		{
-			*lst = new;
-		}
-		else
-		{
-			tmp = ft_lstlast(*lst);
-			tmp->next = new;
-		}
-	}
-}
-
-t_stack	*ft_lstlast(t_stack *lst)
-{
-	t_stack	*tmp;
-
-	tmp = lst;
-	while (tmp != NULL && tmp->next != NULL)
-		tmp = tmp->next;
-	return (tmp);
-}
-
-int get_min(t_stack *stack, int *index, int *position)
+int get_min(t_stack *stack, int *position)
 {
 	int	min;
+	int i;
 
-	index = 0;
+	i = 0;
 	min = stack->content;
-	position = 0;
+	*position = 0;
 	while(stack != NULL)
 	{
 		if(min > stack->content)
 		{
-			position = index;
+			*position = i;
 			min = stack->content;
 		}
 		stack = stack->next;
-		index++;
+		i++;
 	}
 	return (min);
+}
+
+void min_to_top(t_stack **stack, int index, int position)
+{
+	if(position <= (index - 1) / 2)
+	{
+		index = 0;
+		while(index <= position)
+		{
+			if (index + 1 <= position) 
+			{
+				ft_rr(stack, stack);
+				index++;
+			}
+			else
+				ft_ra(stack, 1);
+			index++;
+		}
+	}
+	else
+	{
+		while(index > position + 1)
+		{
+			if (index - 1 > position) 
+			{
+				ft_rrr(stack, stack);
+				index--;
+			}
+			else
+				ft_rra(stack, 1);
+			index--;
+		}
+	}
 }

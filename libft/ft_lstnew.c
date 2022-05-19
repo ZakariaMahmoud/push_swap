@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmahmoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/21 23:28:33 by zmahmoud          #+#    #+#             */
-/*   Updated: 2021/11/25 23:26:07 by zmahmoud         ###   ########.fr       */
+/*   Created: 2021/11/20 22:49:13 by zmahmoud          #+#    #+#             */
+/*   Updated: 2021/11/25 23:25:35 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-int	ft_lstsize(t_list *lst)
+t_stack	*ft_lstnew(int content)
 {
-	int		count;
-	t_list	*tmp;    
+	t_stack	*list;
 
-	tmp = lst;
-	count = 0;
-	while (tmp != NULL)
-	{
-		tmp = tmp->next;
-		count++;
-	}
-	return (count);
+	list = (t_stack *)malloc(sizeof(t_stack));
+	if (!list)
+		return (0);
+	list->content = content;
+	list->next = NULL;
+	return (list);
 }

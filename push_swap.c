@@ -60,21 +60,16 @@ int is_sorted(t_stack *stack)
 	}
 	return (1); 	
 }
-// void push(Stack *stack, int item)
-// {
-//     stack->array[++stack->top] = item;
-// }
-
 
 void print_stack(t_stack *stack)
 {
-	printf("HEAD [");
+	printf("[");
 	while (stack)
 	{
 		printf("%d, ", stack->content);
 		stack = stack->next;
 	}
-	printf("\b\b] TOP\n");
+	printf("\b\b]\n");
 }
 
 void sort_three_numbers(t_stack **stack)
@@ -86,53 +81,42 @@ void sort_three_numbers(t_stack **stack)
 	last = ft_lstlast(*stack);
 	if((*stack)->content > second->content) 
 	{
-		if(second->content < last->content && (*stack)->content < last->content) ft_sa(*stack);
+		if(second->content < last->content && (*stack)->content < last->content) ft_sa(*stack, 1);
 		else if (second->content > last->content)
 		{
-			ft_sa(*stack);
-			ft_rra(stack);
+			ft_sa(*stack, 1);
+			ft_rra(stack, 1);
 		}
-		else if (second->content < last->content) ft_ra(stack);
+		else if (second->content < last->content) ft_ra(stack, 1);
 	}
 	else
 	{
-		if((*stack)->content > last->content) ft_rra(stack);
+		if((*stack)->content > last->content) ft_rra(stack, 1);
 		else
 		{
-			ft_sa(*stack);
-			ft_ra(stack);
+			ft_sa(*stack, 1);
+			ft_ra(stack, 1);
 		}
 	}
 }
 
 void sort_less_ten(t_stack **stack)
 {
-	t_stack  *head;
-	int min;
-	int i;
 	int position;
+	int size;
+	t_stack *stack_b;
 
-
-	min = get_min(stack, &i, &position);
-	printf("-----------------------\n");
-	if(position <= (i - 1) / 2)
+	size = ft_lstsize(*stack);
+	while(size > 3)
 	{
-		i = 0;
-		while(i <= position )
-		{
-			ft_ra(stack);
-			i++;
-		}
+		get_min(*stack, &position);
+		min_to_top(stack, size, position);
+		ft_pb(stack, &stack_b);
+		printf("\nStack B\n");
+		print_stack(stack_b);
 	}
-	else
-	{
-		while(i > position + 1)
-		{
-			ft_rra(stack);
-			i--;
-		}
-	}
-	printf("-----------------------\n");
+		printf("\n*** Stack B ***\n");
+		print_stack(stack_b);
 
 }
 
@@ -154,14 +138,12 @@ int main(int argc, char *argv[])
 		if (!is_sorted(stack))
 		{
 			print_stack(stack);
-			// ft_ra(&stack);
-			// if (argc == 3)
-			// 	ft_sa(stack);
-			// else if (argc == 4)
-			//  	sort_three_numbers(&stack);
+			if (argc == 3)
+				ft_sa(stack, 1);
+			else if (argc == 4)
+			 	sort_three_numbers(&stack);
 			// else if (argc < 10)
-				sort_less_ten(&stack);
-
+			// 	sort_less_ten(&stack);
 			print_stack(stack);
 		}
 	}
@@ -172,32 +154,31 @@ int main(int argc, char *argv[])
 // TWO STACK
 // int main()
 // {
-// 	t_stack *stackA;
-// 	t_stack *stackB;
+// 	t_stack *stack_a;
+// 	t_stack *stack_b;
 
-
-// 	stackA = ft_lstnew(0);
-// 	ft_lstadd_back(&stackA, ft_lstnew(1));
-// 	ft_lstadd_back(&stackA, ft_lstnew(2));
-// 	ft_lstadd_back(&stackA, ft_lstnew(3));
+// 	stack_a = ft_lstnew(0);
+// 	ft_lstadd_back(&stack_a, ft_lstnew(1));
+// 	ft_lstadd_back(&stack_a, ft_lstnew(2));
+// 	ft_lstadd_back(&stack_a, ft_lstnew(3));
 // 	printf("\n--- Stack A ---\n");
-// 	print_stack(stackA);
+// 	print_stack(stack_a);
 // 	printf("---------------\n");
-// 	stackB = ft_lstnew(4);
-// 	ft_lstadd_back(&stackB, ft_lstnew(5));
-// 	ft_lstadd_back(&stackB, ft_lstnew(6));
-// 	ft_lstadd_back(&stackB, ft_lstnew(7));
+// 	stack_b = ft_lstnew(4);
+// 	ft_lstadd_back(&stack_b, ft_lstnew(5));
+// 	ft_lstadd_back(&stack_b, ft_lstnew(6));
+// 	ft_lstadd_back(&stack_b, ft_lstnew(7));
 // 	printf("\n--- Stack B ---\n");
-// 	print_stack(stackB);
+// 	print_stack(stack_b);
 // 	printf("---------------\n");
 
 // 	printf("\n---------- Traitement -----------\n");
-// 	ft_pb(&stackA, &stackB);
+// 	ft_pb(&stack_a, &stack_b);
 // 	printf("\n--- Stack A ---\n");
-// 	print_stack(stackA);
+// 	print_stack(stack_a);
 // 	printf("---------------\n");
 // 	printf("\n--- Stack B ---\n");
-// 	print_stack(stackB);
+// 	print_stack(stack_b);
 // 	printf("---------------\n");
 
 // }	
