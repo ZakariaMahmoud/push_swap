@@ -21,35 +21,35 @@ int get_min(t_stack *stack, int *position)
 	return (min);
 }
 
-void min_to_top(t_stack **stack, int index, int position)
+void min_to_top(t_stack **stack, int size, int position)
 {
-	if(position <= (index - 1) / 2)
+	if(position <= (size - 1) / 2)
 	{
-		index = 0;
-		while(index <= position)
+		size = 0;
+		while(size < position)
 		{
-			if (index + 1 <= position) 
+			if (size + 1 < position)
 			{
 				ft_rr(stack, stack);
-				index++;
+				size++;
 			}
 			else
 				ft_ra(stack, 1);
-			index++;
+			size++;
 		}
 	}
 	else
 	{
-		while(index > position + 1)
+		while(size > position )
 		{
-			if (index - 1 > position) 
+			if(size - 1 > position)
 			{
 				ft_rrr(stack, stack);
-				index--;
+				size--;
 			}
 			else
 				ft_rra(stack, 1);
-			index--;
+			size--;
 		}
 	}
 }

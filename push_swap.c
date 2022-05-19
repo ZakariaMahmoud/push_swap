@@ -107,17 +107,18 @@ void sort_less_ten(t_stack **stack)
 	t_stack *stack_b;
 
 	size = ft_lstsize(*stack);
+	stack_b = NULL;
 	while(size > 3)
 	{
 		get_min(*stack, &position);
 		min_to_top(stack, size, position);
 		ft_pb(stack, &stack_b);
-		printf("\nStack B\n");
-		print_stack(stack_b);
+		size--;
 	}
-		printf("\n*** Stack B ***\n");
-		print_stack(stack_b);
-
+	sort_three_numbers(stack);
+	size = ft_lstsize(stack_b);
+	while(size-- > 0)
+		ft_pa(stack, &stack_b);
 }
 
 int main(int argc, char *argv[])
@@ -142,8 +143,8 @@ int main(int argc, char *argv[])
 				ft_sa(stack, 1);
 			else if (argc == 4)
 			 	sort_three_numbers(&stack);
-			// else if (argc < 10)
-			// 	sort_less_ten(&stack);
+			else if (argc < 10)
+				sort_less_ten(&stack);
 			print_stack(stack);
 		}
 	}
