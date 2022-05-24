@@ -53,3 +53,49 @@ void min_to_top(t_stack **stack, int size, int position)
 		}
 	}
 }
+
+void print_array(int *array, int capacity)
+{
+	int	i;
+
+	i = 0;
+	printf("Array [");
+	while (i < capacity)
+		printf("%d, ", array[i++]);
+	printf("\b\b]\n");
+}
+void push_to_array(t_stack *stack, int *array, int capacity)
+{
+	int	i;
+
+	i = 0;
+	while(i < capacity && stack)
+	{
+		array[i++] = stack->content;
+		stack = stack->next;
+	}
+}
+
+void sort_array(int *array, int capacity)
+{
+	int i;
+	int j;
+	int	tmp;
+
+	i = 0;
+	while(i < capacity)
+	{
+		j = 0;
+		while (j < capacity)
+		{
+			if(array[j] < array[j - 1])
+			{
+				tmp = array[j];
+				array[j] = array[j - 1];
+				array[j - 1] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
+}

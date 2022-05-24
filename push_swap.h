@@ -33,6 +33,9 @@ void    min_to_top(t_stack **stack, int size, int position);
 void    print_stack(t_stack *stack);
 void    remove_top_stack(t_stack **stack);
 void    remove_bottom_stack(t_stack **stack);
+void    print_array(int *array, int capacity);
+void    push_to_array(t_stack *stack, int *array, int capacity);
+void    sort_array(int *array, int capacity);
 
 
 // void    ft_sa(Stack *stack);
