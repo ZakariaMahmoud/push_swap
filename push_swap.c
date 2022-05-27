@@ -61,15 +61,16 @@ int is_sorted(t_stack *stack)
 	return (1); 	
 }
 
-void print_stack(t_stack *stack)
+void print_stack(t_stack *stack, char *msg)
 {
+	printf("\n-----[ %s ]----\n", msg);
 	printf("[");
 	while (stack)
 	{
 		printf("%d, ", stack->content);
 		stack = stack->next;
 	}
-	printf("\b\b]\n");
+	printf("\b\b]\n------------------------------\n");
 }
 
 void sort_three_numbers(t_stack **stack)
@@ -127,9 +128,13 @@ void sort_less_ten(t_stack **stack)
 
 void sort_less_100(t_stack **stack, int capacity)
 {
+	t_stack *stack_b;
 	int *array;
 	int middle;
+	int	min;
+	int	max;
 
+	stack_b = NULL;
 	array = malloc(capacity * sizeof(int));
 	push_to_array(*stack, array, capacity);
 	print_array(array, capacity);
@@ -139,6 +144,20 @@ void sort_less_100(t_stack **stack, int capacity)
 	{
 		if(capacity % 2) middle = (capacity / 2) + 1;  
 		else  middle = (capacity / 2);
+		min = array[middle - 12];
+		max = array[middle + 12];
+
+		while (min >= array[0] && max <= array[capacity - 1])
+		{
+			print_stack(*stack, "Stack A");
+			print_stack(stack_b, "Stack B");
+			push_to_b(stack, &stack_b, max, min, array[middle - 1]);
+			print_stack(*stack, "Stack A");
+			print_stack(stack_b, "Stack B");
+			break;
+		}
+		
+		
 		
 	}
 	free(array);
@@ -160,16 +179,16 @@ int main(int argc, char *argv[])
 			ft_lstadd_back(&stack, ft_lstnew(ft_atoi(argv[i++])));
 		if (!is_sorted(stack))
 		{
-			print_stack(stack);
+			print_stack(stack, "Stack A");
 			if (argc == 3)
 				ft_sa(stack, 1);
 			else if (argc == 4)
 			 	sort_three_numbers(&stack);
 			else if (argc < 10)
 				sort_less_ten(&stack);
-			else if (argc <= 100)
+			else if (argc <= 150)
 				sort_less_100(&stack, argc - 1);
-			print_stack(stack);
+			print_stack(stack, "Stack A");
 		}
 	}
 	else if(argc == 2)

@@ -88,7 +88,7 @@ void sort_array(int *array, int capacity)
 		j = 0;
 		while (j < capacity)
 		{
-			if(array[j] < array[j - 1])
+			if(j > 0 && array[j] < array[j - 1])
 			{
 				tmp = array[j];
 				array[j] = array[j - 1];
@@ -97,5 +97,79 @@ void sort_array(int *array, int capacity)
 			j++;
 		}
 		i++;
+	}
+}
+
+void push_to_b(t_stack **stack_a, t_stack **stack_b, int max, int min, int middle)
+{
+	int position;
+
+	position = in_range(*stack_a, max, min);
+	// middle = 0;
+	printf("Middle = %d\n", middle);
+	while(position > -1)
+	{
+		to_top(stack_a, position);
+		ft_pb(stack_a, stack_b);
+		if (ft_after_head(stack_b) && ft_after_head(stack_b)->content > (*stack_b)->content)
+			ft_rb(stack_b, 1);
+		print_stack(*stack_b, "Stack B");
+		position = in_range(*stack_a, max, min);
+	}
+}
+
+int in_range(t_stack *stack, int max, int min)
+{
+	int i;
+	int position;
+
+	i = 0;
+	position = -1;
+	while(stack != NULL)
+	{
+		if(stack->content <= max && stack->content >= min)
+		{
+			position = i;
+			break;
+		}
+		stack = stack->next;
+		i++;
+	}
+	return (position);
+}
+
+void to_top(t_stack **stack, int position)
+{
+	int size;
+
+	size = ft_lstsize(*stack);
+	if(position <= (size - 1) / 2)
+	{
+		size = 0;
+		while(size < position)
+		{
+			if (size + 1 < position)
+			{
+				ft_rr(stack, stack);
+				size++;
+			}
+			else
+				ft_ra(stack, 1);
+			size++;
+		}
+	}
+	else
+	{
+		while(size > position )
+		{
+			if(size - 1 > position)
+			{
+				ft_rrr(stack, stack);
+				size--;
+			}
+			else
+				ft_rra(stack, 1);
+			size--;
+		}
 	}
 }
