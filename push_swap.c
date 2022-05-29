@@ -141,32 +141,34 @@ void sort_less_100(t_stack **stack, int capacity)
 	push_to_array(*stack, array, capacity);
 	sort_array(array, capacity);
 	// print_array(array, capacity);
-	if (capacity <= 150)
-	{
-		i  = 1;
-		middle = capacity / 2;  
-		offset = capacity / 8;
-		printf("\nMiddle = %d | Offset = %d\n", middle, offset);
-		while (capacity > 0)
-		{
-			print_stack(*stack, "Stack A");
-			print_stack(stack_b, "Stack B");
-			max = middle + (offset * i);
-			min = middle - (offset * i);
-			if(max > capacity || min < 0)
-			{
-				min = 0;
-				max = capacity - 1;
-				capacity = -1;
-			}
-			printf("max = %d | min = %d\n", max, min);
-			push_to_b(stack, &stack_b, max, min, array);
-			print_stack(*stack, "Stack A");
-			print_stack(stack_b, "Stack B");
-			i++;
 
+	i  = 1;
+	middle = capacity / 2;  
+	offset = capacity / ((capacity <= 150) * 8 + (capacity > 150) * 18);
+	// printf("\nMiddle = %d | Offset = %d\n", middle, offset);
+	while (capacity > 0)
+	{
+		// print_stack(*stack, "Stack A");
+		// print_stack(stack_b, "Stack B");
+		max = middle + (offset * i);
+		min = middle - (offset * i);
+		if(max > capacity || min < 0)
+		{
+			min = 0;
+			max = capacity - 1;
+			// capacity = -1;
+			push_a_to_b(stack, &stack_b, max, min,middle,  array);
+			break;
 		}
+		// printf("max = %d | min = %d\n", max, min);
+		push_a_to_b(stack, &stack_b, max, min,middle,  array);
+		// print_stack(*stack, "Stack A");
+		// print_stack(stack_b, "Stack B");
+		i++;
+
 	}
+	push_b_to_a(stack, &stack_b, array);
+
 	free(array);
 }
 
@@ -193,7 +195,7 @@ int main(int argc, char *argv[])
 			 	sort_three_numbers(&stack);
 			else if (argc <= 11)
 				sort_less_ten(&stack);
-			else if (argc <= 151)
+			else
 				sort_less_100(&stack, argc - 1);
 			// print_stack(stack, "Stack A");
 		}

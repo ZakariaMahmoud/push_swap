@@ -37,8 +37,10 @@ void    print_array(int *array, int capacity);
 void    push_to_array(t_stack *stack, int *array, int capacity);
 void    sort_array(int *array, int capacity);
 void	ft_lstiter(t_stack *lst, int min, int max, void (*f)(int, int, int));
-void    push_to_b(t_stack **stack_a, t_stack **stack_b, int max, int min, int *array);
-void    to_top(t_stack **stack, int position);
+void    push_a_to_b(t_stack **stack_a, t_stack **stack_b, int max, int min,int middle,  int *array);
+void    push_b_to_a(t_stack **stack_a, t_stack **stack_b, int *array);
+void    to_top_a(t_stack **stack, int position);
+void    to_top_b(t_stack **stack, int position);
 int     in_range(t_stack *stack, int max, int min);
 int get_position(t_stack *stack, int value);
 
