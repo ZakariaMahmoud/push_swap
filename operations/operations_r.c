@@ -36,10 +36,7 @@ void ft_rr(t_stack **stack_a, t_stack **stack_b)
 
 void ft_rra(t_stack **stack, int print)
 {
-	t_stack	*top;
-
 	if(!ft_lstsize(*stack)) return;
-	top = *stack;
     ft_lstadd_front(stack, ft_lstnew(ft_lstlast(*stack)->content));
 	remove_bottom_stack(stack);
     if (print)
@@ -48,10 +45,8 @@ void ft_rra(t_stack **stack, int print)
 
 void ft_rrb(t_stack **stack, int print)
 {
-	t_stack	*top;
 
 	if(!ft_lstsize(*stack)) return;
-	top = *stack;
     ft_lstadd_front(stack, ft_lstnew(ft_lstlast(*stack)->content));
 	remove_bottom_stack(stack);
     if (print)

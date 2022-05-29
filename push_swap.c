@@ -144,21 +144,18 @@ void sort_less_100(t_stack **stack, int capacity)
 	{
 		if(capacity % 2) middle = (capacity / 2) + 1;  
 		else  middle = (capacity / 2);
-		min = array[middle - 12];
-		max = array[middle + 12];
-
+		min = middle - 12;
+		max = middle + 12;
+		printf("MIN = %d | MAX = %d | Middle = %d\n", min, max, middle);
 		while (min >= array[0] && max <= array[capacity - 1])
 		{
 			print_stack(*stack, "Stack A");
 			print_stack(stack_b, "Stack B");
-			push_to_b(stack, &stack_b, max, min, array[middle - 1]);
+			push_to_b(stack, &stack_b, max, min, array[middle - 1], array);
 			print_stack(*stack, "Stack A");
 			print_stack(stack_b, "Stack B");
 			break;
 		}
-		
-		
-		
 	}
 	free(array);
 }
@@ -184,9 +181,9 @@ int main(int argc, char *argv[])
 				ft_sa(stack, 1);
 			else if (argc == 4)
 			 	sort_three_numbers(&stack);
-			else if (argc < 10)
+			else if (argc <= 11)
 				sort_less_ten(&stack);
-			else if (argc <= 150)
+			else if (argc <= 151)
 				sort_less_100(&stack, argc - 1);
 			print_stack(stack, "Stack A");
 		}
