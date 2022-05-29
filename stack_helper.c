@@ -26,31 +26,13 @@ void min_to_top(t_stack **stack, int size, int position)
 	if(position <= (size - 1) / 2)
 	{
 		size = 0;
-		while(size < position)
-		{
-			if (size + 1 < position)
-			{
-				ft_rr(stack, stack);
-				size++;
-			}
-			else
-				ft_ra(stack, 1);
-			size++;
-		}
+		while(size++ < position)
+			ft_ra(stack, 1);
 	}
 	else
 	{
-		while(size > position )
-		{
-			if(size - 1 > position)
-			{
-				ft_rrr(stack, stack);
-				size--;
-			}
-			else
-				ft_rra(stack, 1);
-			size--;
-		}
+		while(size-- > position )
+			ft_rra(stack, 1);
 	}
 }
 
@@ -61,7 +43,10 @@ void print_array(int *array, int capacity)
 	i = 0;
 	printf("Array [");
 	while (i < capacity)
-		printf("%d, ", array[i++]);
+	{
+		printf("{%d} %d, ",i, array[i]);
+		i++;
+	}
 	printf("\b\b]\n");
 }
 void push_to_array(t_stack *stack, int *array, int capacity)
@@ -100,18 +85,28 @@ void sort_array(int *array, int capacity)
 	}
 }
 
-void push_to_b(t_stack **stack_a, t_stack **stack_b, int max, int min, int middle, int *array)
+void push_to_b(t_stack **stack_a, t_stack **stack_b, int max, int min, int *array)
 {
-
-	printf("Middle = %d\n", middle);
-	while(min <= max)
+	t_stack *tmp;
+	tmp = *stack_a;
+	int position;
+	while(tmp != NULL)
 	{
-		to_top(stack_a, get_position(*stack_a, array[min]));
-		ft_pb(stack_a, stack_b);
-		if (ft_after_head(stack_b) && ft_after_head(stack_b)->content > (*stack_b)->content)
-			ft_rb(stack_b, 1);
-		print_stack(*stack_b, "Stack B");
+		position = get_position(*stack_a, tmp->content);
+	
+		if(tmp->content <= array[max] && tmp->content >= array[min])
+		{
+			// printf("tmp->content = %d | array[max]  = %d | array[min] = %d \n",tmp->content, array[max], array[min]);
+			to_top(stack_a, position);
+			ft_pb(stack_a, stack_b);
+			if (ft_after_head(stack_b) && (*stack_b)->content < ft_after_head(stack_b)->content )
+				ft_rb(stack_b, 1);
+			tmp = *stack_a;
+		}
+		else
+			tmp = tmp->next;
 	}
+	print_stack(*stack_b, "******** Stack B ********");
 }
 
 int in_range(t_stack *stack, int max, int min)
@@ -162,30 +157,12 @@ void to_top(t_stack **stack, int position)
 	if(position <= (size - 1) / 2)
 	{
 		size = 0;
-		while(size < position)
-		{
-			if (size + 1 < position)
-			{
-				ft_rr(stack, stack);
-				size++;
-			}
-			else
+		while(size++ < position)
 				ft_ra(stack, 1);
-			size++;
-		}
 	}
 	else
 	{
-		while(size > position )
-		{
-			if(size - 1 > position)
-			{
-				ft_rrr(stack, stack);
-				size--;
-			}
-			else
+		while(size-- > position)
 				ft_rra(stack, 1);
-			size--;
-		}
 	}
 }
