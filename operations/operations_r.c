@@ -31,9 +31,7 @@ void ft_rr(t_stack **stack_a, t_stack **stack_b)
 	ft_rb(stack_b, 0);
 	write(1,"rr\n", 3);
 }
-
-
-
+ 
 void ft_rra(t_stack **stack, int print)
 {
 	if(!ft_lstsize(*stack)) return;

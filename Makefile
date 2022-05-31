@@ -1,16 +1,13 @@
-SRCS =push_swap.c\
-	./functions/ft_helper.c\
-	./operations/operations_p.c\
-	./operations/operations_r.c\
-	./operations/operations_s.c\
-	stack_helper.c
-
-TEST =learn.c\
-	./operations/operations_r.c\
-	./operations/operations_s.c\
-	./operations/operations_p.c\
-	./functions/ft_helper.c\
-
+SRCS =functions/checker.c\
+	functions/positions.c\
+	functions/sort_helper.c\
+	functions/ft_helper.c\
+	functions/sort.c\
+	functions/stack_helper.c\
+	operations/operations_p.c\
+	operations/operations_s.c\
+	operations/operations_r.c\
+	push_swap.c\
 	
 LIBFT =libft/ft_atoi.c\
 	libft/ft_isdigit.c\
@@ -28,7 +25,6 @@ all : $(NAME)
 
 $(NAME): $(OBJS)
 	gcc $(FLAGS) $(SRCS) $(LIBFT) -o $(NAME)
-
 
 clean:
 	rm -f $(OBJS)
