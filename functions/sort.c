@@ -28,59 +28,51 @@ void sort_three_numbers(t_stack **stack)
 	}
 }
 
-void sort_less_ten(t_stack **stack)
+void sort_less_ten(t_stack **stack_a)
 {
 	t_stack *stack_b;
 	t_stack *second;
 	int     size;
 
-	second = (*stack)->next;
-	size = ft_lstsize(*stack);
+	second = (*stack_a)->next;
+	size = ft_lstsize(*stack_a);
 	stack_b = NULL;
-	if ((*stack)->content > second->content) ft_sa(*stack, 1);
+	if ((*stack_a)->content > second->content) ft_sa(*stack_a, 1);
 	while(size > 3)
 	{
-		if(is_sorted(*stack)) break;
-		to_top_a(stack, get_min_position(*stack));
-		ft_pb(stack, &stack_b);
+		if(is_sorted(*stack_a)) break;
+		to_top_a(stack_a, get_min_position(*stack_a));
+		ft_pb(stack_a, &stack_b);
 		size--;
 	}
-	if(!is_sorted(*stack)) sort_three_numbers(stack);
+	if(!is_sorted(*stack_a)) sort_three_numbers(stack_a);
 	size = ft_lstsize(stack_b);
 	while(size-- > 0)
-		ft_pa(stack, &stack_b);
+		ft_pa(stack_a, &stack_b);
 }
 
-void big_sort(t_stack **stack, int size)
+void big_sort(t_stack **stack_a, int size)
 {
 	t_stack *stack_b;
 	int *array;
-	int middle;
 	int	i;
-	int min;
-	int max;
 	int offset;
 
 	stack_b = NULL;
-	array = malloc(size * sizeof(int));
-	sort_array(*stack, array, size);
-
 	i  = 1;
-	middle = size / 2;  
+	array = malloc(size * sizeof(int));
+	sort_array(*stack_a, array, size);
 	offset = size / ((size <= 150) * 8 + (size > 150) * 18);
 	while (size > 0)
 	{
-		max = middle + (offset * i);
-		min = middle - (offset * i);
-		if(max >= size || min < 0)
+		if((size / 2) + (offset * i) >= size || (size / 2) - (offset * i) < 0)
 		{
-			min = 0;
-			max = size - 1;
-			size = -1;
+			push_a_to_b(stack_a, &stack_b, size - 1, 0, (size / 2),  array);
+			break;
 		}
-		push_a_to_b(stack, &stack_b, max, min,middle,  array);
+		push_a_to_b(stack_a, &stack_b, (size / 2) + (offset * i), (size / 2) - (offset * i), (size / 2),  array);
 		i++;
 	}
-	push_b_to_a(stack, &stack_b, array);
+	push_b_to_a(stack_a, &stack_b, array);
 	free(array);
 }
