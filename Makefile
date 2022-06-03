@@ -25,7 +25,7 @@ OBJS = $(subst .c,.o,$(SRCS))
 all : $(NAME)
 
 $(NAME): $(OBJS)
-	gcc $(FLAGS) $(SRCS) $(LIBFT) -o $(NAME)
+	gcc  $(SRCS) $(LIBFT) -o $(NAME)
 
 clean:
 	rm -f $(OBJS)
