@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/21 23:28:33 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/02 11:47:24 by zmahmoud         ###   ########.fr       */
+/*   Created: 2021/11/15 23:52:29 by zmahmoud          #+#    #+#             */
+/*   Updated: 2022/06/02 17:36:57 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_lstsize(t_stack *lst)
+void	ft_putstr(char *s)
 {
-	int		count;
-	t_stack	*tmp;
-
-	tmp = lst;
-	count = 0;
-	while (tmp != NULL)
-	{
-		tmp = tmp->next;
-		count++;
-	}
-	return (count);
+	if (!s)
+		return ;
+	write(1, s, ft_strlen(s));
 }

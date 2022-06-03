@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmahmoud <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:48:28 by zmahmoud          #+#    #+#             */
-/*   Updated: 2021/11/27 00:09:07 by zmahmoud         ###   ########.fr       */
+/*   Created: 2021/11/09 14:33:03 by zmahmoud          #+#    #+#             */
+/*   Updated: 2022/06/02 17:38:25 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_lstclear(t_stack **lst, void (*del)(void*))
+size_t	ft_strlen(const char *s)
 {
-	t_stack	*tmp;
+	size_t	i;
 
-	if (lst && del)
-	{
-		while (*lst)
-		{
-			tmp = (*lst)->next;
-			ft_lstdelone(*lst, del);
-			(*lst) = tmp;
-		}
-	}
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }

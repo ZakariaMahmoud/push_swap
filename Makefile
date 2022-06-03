@@ -4,6 +4,7 @@ SRCS =functions/checker.c\
 	functions/ft_helper.c\
 	functions/sort.c\
 	functions/stack_helper.c\
+	functions/init.c\
 	operations/operations_p.c\
 	operations/operations_s.c\
 	operations/operations_r.c\

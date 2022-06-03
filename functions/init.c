@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/21 23:28:33 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/02 11:47:24 by zmahmoud         ###   ########.fr       */
+/*   Created: 2022/06/02 11:23:09 by zmahmoud          #+#    #+#             */
+/*   Updated: 2022/06/03 12:55:29 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_lstsize(t_stack *lst)
+void	init_helper(t_helper *helper, int size)
 {
-	int		count;
-	t_stack	*tmp;
-
-	tmp = lst;
-	count = 0;
-	while (tmp != NULL)
-	{
-		tmp = tmp->next;
-		count++;
-	}
-	return (count);
+	helper->array = malloc(size * sizeof(int));
+	helper->size = size;
+	helper->middle = size / 2;
+	helper->max = size - 1;
+	helper->min = 0;
+	helper->down = 0;
 }

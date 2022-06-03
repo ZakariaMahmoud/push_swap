@@ -1,19 +1,50 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/01 10:50:24 by zmahmoud          #+#    #+#             */
+/*   Updated: 2022/06/03 14:21:04 by zmahmoud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
-void	ft_check(int argc, char *argv[])
+static int	is_strdigit(char *str)
 {
-	int		i;
-	int		j;
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i] != '\0')
+	{
+		if (!ft_isdigit(str[i++]))
+			return (0);
+	}
+	return (1);
+}
+
+void	ft_check_args(int argc, char *argv[])
+{
+	int	i;
+	int	j;
+	int	check;	
 
 	i = 1;
-	while(i < argc)
+	while (i < argc)
 	{
 		j = 0;
-		while(argv[i][j])
+		while (argv[i][j])
 		{
-			if (!(ft_isdigit(argv[i][j]) || (argv[i][j] == '-' && ft_isdigit(argv[i][j + 1])) || (argv[i][j] == '+' && ft_isdigit(argv[i][j + 1]))))
+			check = is_strdigit(argv[i]);
+			if (!(ft_isdigit(argv[i][j])
+				|| (argv[i][j] == '-' && check)
+				|| (argv[i][j] == '+' && check)))
 			{
-				write(1,"Error\n", 6);
+				write(1, "Error\n", 6);
 				exit(0);
 			}
 			j++;
@@ -22,25 +53,24 @@ void	ft_check(int argc, char *argv[])
 	}
 }
 
-void ft_check_duplicated(int argc, char *argv[])
+void	ft_check_duplicated(int argc, char *argv[])
 {
 	int	i;
 	int	j;
 
 	i = 1;
-	while(i < argc)
+	while (i < argc)
 	{
 		j = i + 1;
-		while(j < argc)
+		while (j < argc)
 		{
-			if(ft_atoi(argv[i]) == ft_atoi(argv[j]))
+			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
 			{
-				write(1,"Error\n", 6);
+				write(1, "Error\n", 6);
 				exit(0);
 			}
 			j++;
 		}
 		i++;
 	}
-
 }
