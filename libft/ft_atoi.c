@@ -6,9 +6,10 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 14:58:15 by zmahmoud          #+#    #+#             */
-/*   Updated: 2021/11/26 16:34:03 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/06 11:31:03 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../push_swap.h"
 
 static int	ft_isspace(const char *str)
@@ -22,7 +23,7 @@ static int	ft_isspace(const char *str)
 	return (i);
 }
 
-int	ft_atoi(const char *str)
+long long	ft_atoi(const char *str)
 {
 	int		i;
 	int		n;
@@ -48,5 +49,5 @@ int	ft_atoi(const char *str)
 		}
 		ret = (ret * 10) + (str[i++] - '0');
 	}
-	return ((int)(ret * n));
+	return (ret * n);
 }

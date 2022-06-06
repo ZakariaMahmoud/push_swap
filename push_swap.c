@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 10:50:15 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/03 16:18:40 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/06 11:38:42 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int argc, char *argv[])
 	if (argc > 2)
 	{
 		ft_check_args(argc, argv);
+		ft_check_int_range(argc, argv);
 		ft_check_duplicated(argc, argv);
 		stack = ft_lstnew(ft_atoi(argv[1]));
 		i = 2;

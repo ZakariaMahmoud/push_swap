@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 10:50:24 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/03 16:18:26 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/06 11:39:18 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@ static int	is_strdigit(char *str)
 	int	i;
 
 	i = 0;
-	if (!str)
+	if (!str || str[0] == '\0')
 		return (0);
-	printf("sttr = %s\n", str);
 	while (str[i] != '\0')
 	{
 		if (!ft_isdigit(str[i++]))
@@ -37,19 +36,28 @@ void	ft_check_args(int argc, char *argv[])
 	i = 1;
 	while (i < argc)
 	{
-		j = 0;
-		while (argv[i][j])
+		if (!(is_strdigit(argv[i])
+				|| (argv[i][0] == '-' && is_strdigit(&argv[i][1]))
+				|| (argv[i][0] == '+' && is_strdigit(&argv[i][1]))))
 		{
-			check = is_strdigit(&argv[i][j + 1]);
-			printf("check = %s | return = %d\n", &argv[i][j + 1], check);
-			if (!(ft_isdigit(argv[i][j])
-				|| (argv[i][j] == '-' && !check)
-				|| (argv[i][j] == '+' && !check)))
-			{
-				write(1, "Error\n", 6);
-				exit(0);
-			}
-			j++;
+			write(1, "Error\n", 6);
+			exit(0);
+		}
+		i++;
+	}
+}
+
+void	ft_check_int_range(int argc, char *argv[])
+{
+	int	i;
+
+	i = 1;
+	while (i < argc)
+	{
+		if (ft_atoi(argv[i]) > INT_MAX || ft_atoi(argv[i]) < INT_MIN)
+		{
+			write(1, "Error\n", 6);
+			exit(0);
 		}
 		i++;
 	}
