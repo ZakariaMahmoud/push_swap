@@ -32,6 +32,7 @@ BNS =functions/ft_checker.c\
 
 FLAGS = -Wall -Wextra -Werror
 NAME = push_swap
+NAMEBNS = checker
 OBJS = $(subst .c,.o,$(SRCS))
 OBJSBNS = $(subst .c,.o,$(BNS))
 
@@ -41,13 +42,14 @@ $(NAME): $(OBJS)
 	gcc  $(SRCS) $(LIBFT) -o $(NAME)
 
 bonus: $(OBJSBNS)
-	gcc  $(BNS) $(LIBFT) -o checker
+	gcc  $(BNS) $(LIBFT) -o $(NAMEBNS)
+
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(OBJSBNS)
 
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(NAMEBNS)
 
 re: fclean all
 
