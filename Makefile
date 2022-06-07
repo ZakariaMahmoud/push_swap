@@ -1,4 +1,4 @@
-SRCS =functions/checker.c\
+SRCS =functions/ft_checker.c\
 	functions/positions.c\
 	functions/sort_helper.c\
 	functions/ft_helper.c\
