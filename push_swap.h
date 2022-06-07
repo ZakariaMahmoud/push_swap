@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:10:57 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/07 10:24:42 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/07 17:47:09 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
+# include "bonus/get_next_line/get_next_line.h"
 
 typedef struct stack {
 	int				content;
@@ -42,19 +43,21 @@ int			get_position(t_stack *stack, int value);
 int			ft_lstsize(t_stack *lst);
 int			ft_isdigit(int c);
 int			is_sorted(t_stack *stack);
+int			ft_strcmp(const char *s1, const char *s2);
 void		ft_check_int_range(int argc, char *argv[]);
 void		ft_lstadd_back(t_stack **lst, t_stack *new);
 void		ft_lstadd_front(t_stack **lst, t_stack *new);
 void		ft_sa(t_stack *stack, int print);
 void		ft_sb(t_stack *stack, int print);
+void		ft_ss(t_stack *stack_a, t_stack *stack_b, int print);
 void		ft_ra(t_stack **stack, int print);
-void		ft_rra(t_stack **stack, int print);
 void		ft_rb(t_stack **stack, int print);
+void		ft_rr(t_stack **stack_a, t_stack **stack_b, int print);
+void		ft_rra(t_stack **stack, int print);
 void		ft_rrb(t_stack **stack, int print);
-void		ft_rr(t_stack **stack_a, t_stack **stack_b);
-void		ft_rrr(t_stack **stack_a, t_stack **stack_b);
-void		ft_pa(t_stack **stack_a, t_stack **stack_b);
-void		ft_pb(t_stack **stack_a, t_stack **stack_b);
+void		ft_rrr(t_stack **stack_a, t_stack **stack_b, int print);
+void		ft_pa(t_stack **stack_a, t_stack **stack_b, int print);
+void		ft_pb(t_stack **stack_a, t_stack **stack_b, int print);
 void		min_to_top(t_stack **stack, int size, int position);
 void		remove_top_stack(t_stack **stack);
 void		remove_bottom_stack(t_stack **stack);

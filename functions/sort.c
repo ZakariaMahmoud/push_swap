@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:01:26 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/03 13:04:23 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/07 15:51:19 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,14 @@ void	sort_less_ten(t_stack **stack_a)
 		if (is_sorted(*stack_a))
 			break ;
 		to_top_a(stack_a, get_min_position(*stack_a));
-		ft_pb(stack_a, &stack_b);
+		ft_pb(stack_a, &stack_b, 1);
 		size--;
 	}
 	if (!is_sorted(*stack_a))
 		sort_three_numbers(stack_a);
 	size = ft_lstsize(stack_b);
 	while (size-- > 0)
-		ft_pa(stack_a, &stack_b);
+		ft_pa(stack_a, &stack_b, 1);
 }
 
 void	big_sort(t_stack **stack_a, int size)

@@ -6,13 +6,13 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 10:50:59 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/02 11:47:43 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/07 15:50:05 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_pa(t_stack **stack_a, t_stack **stack_b)
+void	ft_pa(t_stack **stack_a, t_stack **stack_b, int print)
 {
 	t_stack	*top;
 
@@ -22,10 +22,11 @@ void	ft_pa(t_stack **stack_a, t_stack **stack_b)
 	else
 		*stack_a = ft_lstnew(top->content);
 	remove_top_stack(stack_b);
-	write(1, "pa\n", 3);
+	if (print)
+		write(1, "pa\n", 3);
 }
 
-void	ft_pb(t_stack **stack_a, t_stack **stack_b)
+void	ft_pb(t_stack **stack_a, t_stack **stack_b, int print)
 {
 	t_stack	*top;
 
@@ -35,5 +36,6 @@ void	ft_pb(t_stack **stack_a, t_stack **stack_b)
 	else
 		*stack_b = ft_lstnew(top->content);
 	remove_top_stack(stack_a);
-	write(1, "pb\n", 3);
+	if (print)
+		write(1, "pb\n", 3);
 }

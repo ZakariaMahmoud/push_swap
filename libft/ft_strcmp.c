@@ -6,11 +6,11 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:32:33 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/07 10:33:42 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/07 15:59:36 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap_bonus.h"
+#include "../push_swap.h"
 
 int	ft_strcmp(const char *s1, const char *s2)
 {

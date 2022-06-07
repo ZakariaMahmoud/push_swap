@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:05:41 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/03 13:06:35 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/07 15:51:25 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	push_a_to_b(t_stack **stack_a, t_stack **stack_b, t_helper *helper)
 		{
 			position = get_position(*stack_a, tmp->content);
 			to_top_a(stack_a, position);
-			ft_pb(stack_a, stack_b);
+			ft_pb(stack_a, stack_b, 1);
 			if ((*stack_b)->content < helper->array[helper->middle])
 				ft_rb(stack_b, 1);
 			tmp = *stack_a;
@@ -40,7 +40,7 @@ void	push_b_to_a_helper(t_stack **stack_a, t_stack **stack_b,
 {
 	if ((*stack_b)->content == helper->array[helper->size])
 	{
-		ft_pa(stack_a, stack_b);
+		ft_pa(stack_a, stack_b, 1);
 		helper->size--;
 	}
 	else
@@ -48,7 +48,7 @@ void	push_b_to_a_helper(t_stack **stack_a, t_stack **stack_b,
 		if (helper->down == 0
 			|| (*stack_b)->content > ft_lstlast(*stack_a)->content)
 		{
-			ft_pa(stack_a, stack_b);
+			ft_pa(stack_a, stack_b, 1);
 			ft_ra(stack_a, 1);
 			helper->down++;
 		}
