@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   ft_checker.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 10:50:24 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/06 11:39:18 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/08 09:07:50 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	ft_check_args(int argc, char *argv[])
 		}
 		i++;
 	}
+	ft_check_int_range(argc, argv);
 }
 
 void	ft_check_int_range(int argc, char *argv[])

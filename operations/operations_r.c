@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 10:51:04 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/07 09:55:18 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/08 09:56:43 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,3 @@ void	ft_rrb(t_stack **stack, int print)
 	if (print)
 		write(1, "rrb\n", 4);
 }
-
