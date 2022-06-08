@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 09:35:57 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/08 09:57:53 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/08 11:33:48 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	get_input(t_stack **stack_a, t_stack **stack_b)
 	while (str)
 	{
 		check_standard_input(str, stack_a, stack_b);
+		free(str);
 		str = get_next_line(0);
 	}
 }

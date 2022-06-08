@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/06/08 11:17:30 by zmahmoud          #+#    #+#              #
+#    Updated: 2022/06/08 11:17:55 by zmahmoud         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 SRCS =functions/ft_checker.c\
 	functions/positions.c\
 	functions/sort_helper.c\
@@ -52,4 +64,3 @@ fclean: clean
 	rm -f $(NAME) $(NAMEBNS)
 
 re: fclean all
-
