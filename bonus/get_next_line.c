@@ -6,11 +6,12 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 12:02:05 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/07 09:44:07 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/10 17:54:50 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../push_swap.h"
+
 #define BUFFER_SIZE 1
 
 int	new_line_position(char const *str)

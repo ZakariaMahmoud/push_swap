@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 10:50:24 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/08 09:07:50 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/10 15:15:32 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,35 +27,33 @@ static int	is_strdigit(char *str)
 	return (1);
 }
 
-void	ft_check_args(int argc, char *argv[])
+void	ft_check_args(int argc, char *args[])
 {
-	int	i;
-	int	j;
-	int	check;	
+	int	i;	
 
-	i = 1;
+	i = 0;
 	while (i < argc)
 	{
-		if (!(is_strdigit(argv[i])
-				|| (argv[i][0] == '-' && is_strdigit(&argv[i][1]))
-				|| (argv[i][0] == '+' && is_strdigit(&argv[i][1]))))
+		if (!(is_strdigit(args[i])
+				|| (args[i][0] == '-' && is_strdigit(&args[i][1]))
+				|| (args[i][0] == '+' && is_strdigit(&args[i][1]))))
 		{
 			write(1, "Error\n", 6);
 			exit(0);
 		}
 		i++;
 	}
-	ft_check_int_range(argc, argv);
+	ft_check_int_range(argc, args);
 }
 
-void	ft_check_int_range(int argc, char *argv[])
+void	ft_check_int_range(int argc, char *args[])
 {
 	int	i;
 
-	i = 1;
+	i = 0;
 	while (i < argc)
 	{
-		if (ft_atoi(argv[i]) > INT_MAX || ft_atoi(argv[i]) < INT_MIN)
+		if (ft_atoi(args[i]) > INT_MAX || ft_atoi(args[i]) < INT_MIN)
 		{
 			write(1, "Error\n", 6);
 			exit(0);
@@ -64,18 +62,18 @@ void	ft_check_int_range(int argc, char *argv[])
 	}
 }
 
-void	ft_check_duplicated(int argc, char *argv[])
+void	ft_check_duplicated(int argc, char *args[])
 {
 	int	i;
 	int	j;
 
-	i = 1;
+	i = 0;
 	while (i < argc)
 	{
 		j = i + 1;
 		while (j < argc)
 		{
-			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
+			if (ft_atoi(args[i]) == ft_atoi(args[j]))
 			{
 				write(1, "Error\n", 6);
 				exit(0);

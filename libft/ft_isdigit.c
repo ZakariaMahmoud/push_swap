@@ -6,9 +6,11 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 14:32:10 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/08 11:18:10 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/10 08:27:35 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../push_swap.h"
 
 int	ft_isdigit(int c)
 {

@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations_rr.c                                    :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/01 10:51:04 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/10 15:19:51 by zmahmoud         ###   ########.fr       */
+/*   Created: 2021/11/09 14:32:28 by zmahmoud          #+#    #+#             */
+/*   Updated: 2022/06/10 08:27:48 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_rr(t_stack **stack_a, t_stack **stack_b, int print)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	if (!ft_lstsize(*stack_a) || !ft_lstsize(*stack_b))
-		return ;
-	ft_ra(stack_a, 0);
-	ft_rb(stack_b, 0);
-	if (print)
-		write(1, "rr\n", 3);
-}
+	size_t			i;
+	unsigned char	*s;
+	unsigned char	*d;
 
-void	ft_rrr(t_stack **stack_a, t_stack **stack_b, int print)
-{
-	if (!ft_lstsize(*stack_a) || !ft_lstsize(*stack_b))
-		return ;
-	ft_rra(stack_a, 0);
-	ft_rrb(stack_b, 0);
-	if (print)
-		write(1, "rrr\n", 4);
+	i = 0;
+	s = (unsigned char *)src;
+	d = (unsigned char *)dest;
+	if (!s && !d)
+		return (0);
+	while (i < n)
+	{
+		d[i] = s[i];
+		i++;
+	}	
+	return (dest);
 }

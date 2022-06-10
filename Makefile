@@ -6,7 +6,7 @@
 #    By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/08 11:17:30 by zmahmoud          #+#    #+#              #
-#    Updated: 2022/06/08 11:17:55 by zmahmoud         ###   ########.fr        #
+#    Updated: 2022/06/10 18:53:56 by zmahmoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRCS =functions/ft_checker.c\
 	functions/ft_helper.c\
 	functions/sort.c\
 	functions/stack_helper.c\
+	functions/split_helper.c\
 	functions/init.c\
 	operations/operations_p.c\
 	operations/operations_s.c\
@@ -29,12 +30,19 @@ LIBFT =libft/ft_atoi.c\
 	libft/ft_lstlast.c\
 	libft/ft_lstnew.c\
 	libft/ft_strcmp.c\
-	libft/ft_lstsize.c
+	libft/ft_lstsize.c\
+	libft/ft_substr.c\
+	libft/ft_memcpy.c\
+	libft/ft_strlcpy.c\
+	libft/ft_split.c\
+	libft/ft_strdup.c\
+	libft/ft_strlen.c\
+	libft/ft_strjoin.c\
 
 BNS =functions/ft_checker.c\
+	functions/split_helper.c\
 	functions/ft_helper.c\
-	bonus/get_next_line/get_next_line.c\
-	bonus/get_next_line/get_next_line_utils.c\
+	bonus/get_next_line.c\
 	bonus/bonus_helper.c\
 	operations/operations_p.c\
 	operations/operations_s.c\
@@ -51,10 +59,10 @@ OBJSBNS = $(subst .c,.o,$(BNS))
 all : $(NAME)
 
 $(NAME): $(OBJS)
-	gcc  $(SRCS) $(LIBFT) -o $(NAME)
+	gcc  $(SRCS) $(LIBFT) $(FLAGS) -o $(NAME)
 
 bonus: $(OBJSBNS)
-	gcc  $(BNS) $(LIBFT) -o $(NAMEBNS)
+	gcc  $(BNS) $(LIBFT) $(FLAGS) -o $(NAMEBNS)
 
 clean:
 	rm -f $(OBJS) $(OBJSBNS)

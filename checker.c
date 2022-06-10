@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 09:35:57 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/08 11:33:48 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/10 19:03:59 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,22 +64,27 @@ int	main(int argc, char *argv[])
 	int		i;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	char	**args;
 
-	if (argc > 2)
+	if (argc <= 1)
+		exit(0);
+	args = ft_split(args_to_str(argc, argv), ' ');
+	argc = arglen(args);
+	if (argc > 1)
 	{
-		ft_check_args(argc, argv);
-		ft_check_duplicated(argc, argv);
-		stack_a = ft_lstnew(ft_atoi(argv[1]));
-		i = 2;
+		ft_check_args(argc, args);
+		ft_check_duplicated(argc, args);
+		stack_a = ft_lstnew(ft_atoi(args[0]));
+		i = 1;
 		while (i < argc)
-			ft_lstadd_back(&stack_a, ft_lstnew(ft_atoi(argv[i++])));
+			ft_lstadd_back(&stack_a, ft_lstnew(ft_atoi(args[i++])));
 		get_input(&stack_a, &stack_b);
 		if (is_sorted(stack_a) && !ft_lstsize(stack_b)
-			&& ft_lstsize(stack_a) == argc - 1)
+			&& ft_lstsize(stack_a) == argc)
 			write(1, "OK\n", 3);
 		else
 			write(1, "KO\n", 3);
 	}
 	else if (argc == 2)
-		ft_check_args(argc, argv);
+		ft_check_args(argc, args);
 }

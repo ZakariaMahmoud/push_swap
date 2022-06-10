@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/11 03:34:01 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/07 10:21:33 by zmahmoud         ###   ########.fr       */
+/*   Created: 2021/11/09 14:32:59 by zmahmoud          #+#    #+#             */
+/*   Updated: 2022/06/10 08:27:58 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include <unistd.h>
-# include <stdlib.h>
+#include "../push_swap.h"
 
-size_t	ft_strlen(const char *s);
-char	*get_next_line(int fd);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strjoin(char **s1, char **s2);
-void	*ft_memcpy(void *dest, const void *src, size_t n);
-void	*ft_free(char **p);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	i;
 
-#endif
+	if (size)
+	{
+		i = 0;
+		while (i < size - 1 && src[i] != '\0')
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	return (ft_strlen(src));
+}

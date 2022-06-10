@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 10:50:59 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/07 15:50:05 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/10 08:07:09 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_pa(t_stack **stack_a, t_stack **stack_b, int print)
 	t_stack	*top;
 
 	top = *stack_b;
+	if (!ft_lstsize(*stack_b))
+		return ;
 	if (ft_lstsize(*stack_a))
 		ft_lstadd_front(stack_a, ft_lstnew((*stack_b)->content));
 	else
@@ -31,6 +33,8 @@ void	ft_pb(t_stack **stack_a, t_stack **stack_b, int print)
 	t_stack	*top;
 
 	top = *stack_a;
+	if (!ft_lstsize(*stack_a))
+		return ;
 	if (ft_lstsize(*stack_b))
 		ft_lstadd_front(stack_b, ft_lstnew(top->content));
 	else

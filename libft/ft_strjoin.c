@@ -1,58 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 19:27:39 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/02 17:42:09 by zmahmoud         ###   ########.fr       */
+/*   Created: 2021/11/11 18:39:04 by zmahmoud          #+#    #+#             */
+/*   Updated: 2022/06/10 15:20:37 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static int	ft_intlen(int n)
+void	*ft_free(char **p)
 {
-	int	count;
-
-	count = 0;
-	if (n <= 0)
+	if (*p)
 	{
-		n *= -1;
-		count++;
+		free(*p);
+		*p = NULL;
 	}
-	while (n > 0)
-	{
-		n /= 10;
-		count++;
-	}
-	return (count);
+	return (NULL);
 }
 
-char	*ft_itoa(int n)
+char	*ft_strjoin(char **s1, char **s2)
 {
-	int		len;
+	size_t	s1_len;
+	size_t	s2_len;
 	char	*ret;
-	int		i;
 
-	i = 0;
-	len = ft_intlen(n);
-	ret = (char *)malloc((len + 1) * sizeof(char));
+	if (!*s1 || !*s2)
+		return (NULL);
+	s1_len = ft_strlen(*s1);
+	s2_len = ft_strlen(*s2);
+	ret = (char *)malloc((s1_len + s2_len + 1) * sizeof(char));
 	if (!ret)
 		return (0);
-	if (n < 0)
-	{
-		ret[0] = '-';
-		n *= -1;
-	}
-	else if (n == 0)
-		ret[0] = '0';
-	ret[len--] = '\0';
-	while (n > 0)
-	{
-		ret[len--] = (n % 10) + '0';
-		n /= 10;
-	}
+	ft_memcpy(ret, *s1, s1_len);
+	ft_memcpy(ret + s1_len, *s2, s2_len);
+	ret[s1_len + s2_len] = '\0';
+	ft_free(s1);
 	return (ret);
 }
