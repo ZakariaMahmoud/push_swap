@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 09:35:57 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/10 19:03:59 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/11 09:03:08 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	check_standard_input(char *str, t_stack **stack_a, t_stack **stack_b)
 		print_error();
 }
 
-void	get_input(t_stack **stack_a, t_stack **stack_b)
+static void	get_input(t_stack **stack_a, t_stack **stack_b)
 {
 	char	*str;
 
@@ -57,6 +57,15 @@ void	get_input(t_stack **stack_a, t_stack **stack_b)
 		free(str);
 		str = get_next_line(0);
 	}
+}
+
+static void	check_stacks(t_stack *stack_a, t_stack *stack_b, int argc)
+{
+	if (is_sorted(stack_a) && !ft_lstsize(stack_b)
+		&& ft_lstsize(stack_a) == argc)
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
 }
 
 int	main(int argc, char *argv[])
@@ -79,11 +88,7 @@ int	main(int argc, char *argv[])
 		while (i < argc)
 			ft_lstadd_back(&stack_a, ft_lstnew(ft_atoi(args[i++])));
 		get_input(&stack_a, &stack_b);
-		if (is_sorted(stack_a) && !ft_lstsize(stack_b)
-			&& ft_lstsize(stack_a) == argc)
-			write(1, "OK\n", 3);
-		else
-			write(1, "KO\n", 3);
+		check_stacks(stack_a, stack_b, argc);
 	}
 	else if (argc == 2)
 		ft_check_args(argc, args);

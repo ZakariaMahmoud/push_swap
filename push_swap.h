@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:10:57 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/10 17:58:29 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/11 09:01:01 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
-
 
 typedef struct stack {
 	int				content;
