@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:01:26 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/11 20:14:16 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/12 09:42:10 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,5 @@ void	big_sort(t_stack **stack_a, int size)
 		i++;
 	}
 	push_b_to_a(stack_a, &stack_b, &helper);
+	free(helper.array);
 }

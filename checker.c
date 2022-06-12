@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 09:35:57 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/11 10:23:10 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/12 10:02:02 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	check_standard_input(char *str, t_stack **stack_a, t_stack **stack_b)
 		print_error();
 }
 
-static void	get_input(t_stack **stack_a, t_stack **stack_b)
+static void	get_output(t_stack **stack_a, t_stack **stack_b)
 {
 	char	*str;
 
@@ -74,10 +74,12 @@ int	main(int argc, char *argv[])
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	char	**args;
+	char	*args_str;
 
 	if (argc <= 1)
 		exit(0);
-	args = ft_split(args_to_str(argc, argv), ' ');
+	args_str = args_to_str(argc, argv);
+	args = ft_split(args_str, ' ');
 	argc = arglen(args);
 	if (argc > 1)
 	{
@@ -87,10 +89,10 @@ int	main(int argc, char *argv[])
 		i = 1;
 		while (i < argc)
 			ft_lstadd_back(&stack_a, ft_lstnew(ft_atoi(args[i++])));
-		get_input(&stack_a, &stack_b);
+		get_output(&stack_a, &stack_b);
 		check_stacks(stack_a, stack_b, argc);
 	}
 	else if (argc == 2)
 		ft_check_args(argc, args);
+	free_args(args, argc);
 }
-

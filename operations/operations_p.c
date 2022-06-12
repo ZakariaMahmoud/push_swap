@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 10:50:59 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/11 21:04:41 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/12 09:06:44 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	ft_pa(t_stack **stack_a, t_stack **stack_b, int print)
 	remove_top_stack(stack_b);
 	if (print)
 		write(1, "pa\n", 3);
-	print_stack(*stack_a, *stack_b, 1);
 }
 
 void	ft_pb(t_stack **stack_a, t_stack **stack_b, int print)
@@ -43,5 +42,4 @@ void	ft_pb(t_stack **stack_a, t_stack **stack_b, int print)
 	remove_top_stack(stack_a);
 	if (print)
 		write(1, "pb\n", 3);
-	print_stack(*stack_a, *stack_b, 1);
 }

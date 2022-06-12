@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:10:57 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/11 21:04:11 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/12 09:46:25 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void		sort_less_ten(t_stack **stack);
 void		big_sort(t_stack **stack, int size);
 void		print_helper_struct(t_helper *array);
 void		init_helper(t_helper *helper, int size);
+void		free_args(char **ret, int i);
 void		*ft_free(char **p);
 void		*ft_memcpy(void *dest, const void *src, size_t n);
 char		*get_next_line(int fd);
@@ -89,9 +90,5 @@ char		*ft_strjoin(char **s1, char **s2);
 char		*args_to_str(int argc, char *argv[]);
 size_t		ft_strlcpy(char *dst, const char *src, size_t size);
 size_t		ft_strlen(const char *s);
-
-
-
-void print_stack(t_stack *stack_a, t_stack *stack_b, int debug);
 
 #endif

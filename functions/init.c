@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 11:23:09 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/03 12:55:29 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/12 09:10:15 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void	init_helper(t_helper *helper, int size)
 {
 	helper->array = malloc(size * sizeof(int));
+	if (!helper->array)
+		exit(0);
 	helper->size = size;
 	helper->middle = size / 2;
 	helper->max = size - 1;

@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 10:50:15 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/11 21:10:18 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/12 10:37:53 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,24 @@ static void	sort(int argc, t_stack **stack)
 		big_sort(stack, argc);
 }
 
+static void	ft_free_args(char **ret, int i)
+{
+	while (i > 0)
+		free(ret[--i]);
+	free(ret);
+}
+
 int	main(int argc, char *argv[])
 {
 	int		i;
 	t_stack	*stack;
 	char	**args;
+	char	*args_str;
 
 	if (argc <= 1)
 		exit(0);
-	args = ft_split(args_to_str(argc, argv), ' ');
+	args_str = args_to_str(argc, argv);
+	args = ft_split(args_str, ' ');
 	argc = arglen(args);
 	if (argc > 1)
 	{
@@ -42,10 +51,10 @@ int	main(int argc, char *argv[])
 		i = 1;
 		while (i < argc)
 			ft_lstadd_back(&stack, ft_lstnew(ft_atoi(args[i++])));
-		print_stack(stack, NULL, 0);
 		if (!is_sorted(stack))
 			sort(argc, &stack);
 	}
 	else if (argc == 2)
 		ft_check_args(argc, args);
+	ft_free_args(args, argc);
 }

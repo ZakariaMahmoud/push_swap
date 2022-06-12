@@ -6,7 +6,7 @@
 #    By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/08 11:17:30 by zmahmoud          #+#    #+#              #
-#    Updated: 2022/06/11 12:12:45 by zmahmoud         ###   ########.fr        #
+#    Updated: 2022/06/12 10:10:01 by zmahmoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,6 @@ SRCS =functions/ft_checker.c\
 	operations/operations_s.c\
 	operations/operations_r.c\
 	push_swap.c\
-	print_stack.c\
 	
 LIBFT =libft/ft_atoi.c\
 	libft/ft_isdigit.c\
@@ -57,17 +56,16 @@ NAMEBNS = checker
 OBJS = $(subst .c,.o,$(SRCS))
 OBJSBNS = $(subst .c,.o,$(BNS))
 
-all : $(NAME)
-
 $(NAME): $(OBJS)
 	gcc  $(SRCS) $(LIBFT) $(FLAGS) -o $(NAME)
+
+all : $(NAME) bonus
 
 bonus: $(OBJSBNS)
 	gcc  $(BNS) $(LIBFT) $(FLAGS) -o $(NAMEBNS)
 
 clean:
 	rm -f $(OBJS) $(OBJSBNS)
-
 
 fclean: clean
 	rm -f $(NAME) $(NAMEBNS)

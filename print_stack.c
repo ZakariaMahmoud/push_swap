@@ -77,7 +77,7 @@ void	print_one_stack(t_stack *stack, int debug, char stack_name)
 
 void print_stack(t_stack *stack_a, t_stack *stack_b, int debug)
 {
-	debug = 0;
+	
 	if (!stack_a && stack_b)
 		print_one_stack(stack_b, debug, 'B');
 	else if (stack_a && !stack_b)

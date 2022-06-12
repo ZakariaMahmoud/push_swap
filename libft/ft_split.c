@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 23:22:29 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/10 09:43:22 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/12 09:27:39 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	ft_charlen(const char *s, char c, int *start)
 
 static char	**ft_free_split(char **ret, int i)
 {
-	while (i >= 0)
+	while (i > 0)
 		free(ret[--i]);
 	free(ret);
 	return (0);

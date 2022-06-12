@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:56:55 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/08 11:16:25 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/12 09:45:56 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,11 @@ int	is_sorted(t_stack *stack)
 		stack = stack->next;
 	}
 	return (1);
+}
+
+void	free_args(char **ret, int i)
+{
+	while (i > 0)
+		free(ret[--i]);
+	free(ret);
 }
