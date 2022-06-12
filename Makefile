@@ -6,7 +6,7 @@
 #    By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/08 11:17:30 by zmahmoud          #+#    #+#              #
-#    Updated: 2022/06/10 18:53:56 by zmahmoud         ###   ########.fr        #
+#    Updated: 2022/06/11 12:12:45 by zmahmoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS =functions/ft_checker.c\
 	operations/operations_s.c\
 	operations/operations_r.c\
 	push_swap.c\
+	print_stack.c\
 	
 LIBFT =libft/ft_atoi.c\
 	libft/ft_isdigit.c\

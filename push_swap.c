@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 10:50:15 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/10 18:51:01 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/11 21:10:18 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	main(int argc, char *argv[])
 		i = 1;
 		while (i < argc)
 			ft_lstadd_back(&stack, ft_lstnew(ft_atoi(args[i++])));
+		print_stack(stack, NULL, 0);
 		if (!is_sorted(stack))
 			sort(argc, &stack);
 	}

@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:10:57 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/11 09:01:01 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/11 21:04:11 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ typedef struct stack {
 	int				content;
 	struct stack	*next;
 }	t_stack;
+
+typedef struct stacks
+{
+	t_stack	*a;
+	t_stack	*b;
+}	t_stacks;
 
 typedef struct helper
 {
@@ -83,5 +89,9 @@ char		*ft_strjoin(char **s1, char **s2);
 char		*args_to_str(int argc, char *argv[]);
 size_t		ft_strlcpy(char *dst, const char *src, size_t size);
 size_t		ft_strlen(const char *s);
+
+
+
+void print_stack(t_stack *stack_a, t_stack *stack_b, int debug);
 
 #endif

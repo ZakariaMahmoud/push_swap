@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 09:35:57 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/11 09:03:08 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/06/11 10:23:10 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,3 +93,4 @@ int	main(int argc, char *argv[])
 	else if (argc == 2)
 		ft_check_args(argc, args);
 }
+
