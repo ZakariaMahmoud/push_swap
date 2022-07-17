@@ -6,7 +6,7 @@
 /*   By: zmahmoud <zmahmoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 10:50:15 by zmahmoud          #+#    #+#             */
-/*   Updated: 2022/06/12 10:37:53 by zmahmoud         ###   ########.fr       */
+/*   Updated: 2022/07/17 18:06:50 by zmahmoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ int	main(int argc, char *argv[])
 	char	**args;
 	char	*args_str;
 
-	if (argc <= 1)
-		exit(0);
 	args_str = args_to_str(argc, argv);
 	args = ft_split(args_str, ' ');
 	argc = arglen(args);
-	if (argc > 1)
+	if (argc <= 1)
+		ft_check_args(argc, args);
+	else if (argc > 1)
 	{
 		ft_check_args(argc, args);
 		ft_check_duplicated(argc, args);
